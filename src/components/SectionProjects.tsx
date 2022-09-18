@@ -34,8 +34,8 @@ const Container = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     max-width: 800px;
-    margin-bottom: 400px;
-    @media screen and (max-width: 1000px) {
+    margin-bottom: 300px;
+    @media screen and (max-width: 925px) {
     margin-bottom: 250px;
   }
 `
@@ -44,7 +44,7 @@ const SectionContent = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 925px) {
     flex-direction: column;
   }
 

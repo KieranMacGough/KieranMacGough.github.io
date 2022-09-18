@@ -23,7 +23,7 @@ const Container = styled.div`
     align-items: flex-start;
     max-width: 800px;
     margin-bottom: 400px;
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 925px) {
     margin-bottom: 250px;
   }
 `

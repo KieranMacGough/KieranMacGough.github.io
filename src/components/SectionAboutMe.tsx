@@ -34,8 +34,8 @@ const Container = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     max-width: 800px;
-    margin-bottom: 400px;
-    @media screen and (max-width: 1000px) {
+    margin-bottom: 300px;
+    @media screen and (max-width: 925px) {
     margin-bottom: 250px;
   }
 `
@@ -44,14 +44,14 @@ const SectionContent = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 925px) {
     flex-direction: column;
   }
 
 `
 const Text = styled.p`
     margin-right: 30px;
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 925px) {
     margin-right: 0px;
     }
 `
@@ -63,7 +63,7 @@ const BulletList = styled.ul`
     -moz-columns: 2;
     list-style-position: inside;
     max-width: 400px;
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 925px) {
     margin-bottom: 20px;
   }
 `
@@ -77,7 +77,7 @@ const Image = styled.img`
       border-radius: 20%;
       max-width: 300px;
       align-self: flex-start;
-      @media screen and (max-width: 1000px) {
+      @media screen and (max-width: 925px) {
         align-self: center;
   }
 `

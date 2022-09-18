@@ -28,9 +28,10 @@ const Wrapper = styled.button`
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 200px;
+  max-width: 200px;
   border: 0;
   background-color: transparent;
+  padding: 0 20px 0 0;
   &:hover > a {
     color: orange;
   }
@@ -39,10 +40,11 @@ const Wrapper = styled.button`
     transition: none;
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 925px) {
     animation: fade-from-right 1s forwards calc((${props => props.id} - 1) * 300ms);
     padding: 20px 0;
     justify-content: left;
+    width: 200px;
   }
 `
 

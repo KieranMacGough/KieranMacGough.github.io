@@ -22,7 +22,7 @@ const MenuItems = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 925px) {
     flex-direction: column;
     align-items: left;
     justify-content: left;
@@ -40,7 +40,7 @@ const Button = styled.button`
 
     justify-content: left;
     overflow: visible;
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 925px) {
       margin: 20px 0 0 0;
       animation: fade-from-right 1s forwards calc((${props => props.id} - 1) * 300ms);
     }

@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import NavbarMenu from './NavbarMenu';
 
@@ -12,13 +12,39 @@ interface IWrapper {
 
 function Navbar() {
     const [navOpen, setNavOpen] = useState<boolean>(false);
+    const [currentScrollHeight, setCurrentScrollHeight] = useState<number>(0);
+    useEffect(() => {
+        navOpen ? document.body.style.overflow = "hidden" : document.body.style.overflow = "unset"
+    }, [navOpen])
+
 
     const handleToggle = () => {
         setNavOpen(prev => !prev);
     };
+
+    
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+        console.log(window.scrollY);
+        console.log(currentScrollHeight);
+        if (currentScrollHeight > window.scrollY) {
+            console.log("Hide Nav")
+            document.getElementById("navbar")!.style.top = "0";
+        } else {
+            console.log("Show Nav")
+            document.getElementById("navbar")!.style.top = "-110px";
+        }
+        setCurrentScrollHeight(window.scrollY);
+            // if (document.body.scrollHeight > 20 || document.documentElement.scrollTop < 20) {
+            //     document.getElementById("navbar")!.style.top = "0";
+            // } else {
+            //     document.getElementById("navbar")!.style.top = "-100px";
+            // }
+    }
     return (
         <>
-            <Container>
+            <Container id="navbar">
                 <Logo></Logo>
                 <Hamburger onClick={handleToggle}>
                     <svg
@@ -47,12 +73,19 @@ const Container = styled.section`
     display: flex;
     justify-content: space-between;
     padding: 2em;
+    position: fixed;
+    top: -110px;
+    z-index: 1;
+    width: 100%;
+    transition: all 300ms ease;
+    backdrop-filter: blur(8px);
+    background-color: #13262FB3;
+    box-shadow: 0 1px 20px 1px darkgray;
 `;
 
 const Logo = styled.img``
 
 const Hamburger = styled.button`
-  // removes default border on button element
   border: 0;
   height: 40px;
   width: 40px;
@@ -61,7 +94,7 @@ const Hamburger = styled.button`
   cursor: pointer;
   display: none;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 925px) {
     display: block;
     
   }
@@ -71,18 +104,19 @@ const Wrapper = styled.div<IWrapper>`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 2em;
-    @media screen and (max-width: 1000px) {
+    padding: 0 2em 0 0;
+    @media screen and (max-width: 925px) {
         position: absolute;
         right: 0;
-        bottom: 0;
-        display: ${props => props.navOpen ? 'flex' : 'none' };
+        top:0;
+        display: ${props => props.navOpen ? 'flex' : 'none'};
         flex-direction: column;
         justify-content: center;
         align-items: flex-end;
         // makes menu span full height and width
         width: 100%;
-        height: calc(100vh - 100px);
-        backdrop-filter: blur(1px);
+        height: calc(100vh);
+        backdrop-filter: blur(5px) saturate(80%);
+        background-color: red;
   }
 `

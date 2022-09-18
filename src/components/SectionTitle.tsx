@@ -47,7 +47,7 @@ const ShortTitle = styled.a`
   font-size: 60px;
   font-weight: 400;
   display:none;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 925px) {
     display: inline-block;
   }
 `
@@ -57,7 +57,7 @@ const Title = styled.a`
   font-size: 60px;
   font-weight: 400;
   display: inline-block;
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 925px) {
     display: none;
 }
 `
