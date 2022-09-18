@@ -2,11 +2,13 @@ import React from 'react';
 import GlobalStyle from './styles/global';
 import Socials from './components/Socials';
 import Navbar from './components/Navbar';
-import SectionIntro from './components/SectionIntro';
+import SectionIntro from './components/Intro';
 import styled from 'styled-components';
-import SectionAboutMe from './components/SectionAboutMe';
-import SectionExperience from './components/SectionExperience';
-import SectionProjects from './components/SectionProjects';
+import SectionAboutMe from './components/AboutMe';
+import Experience from './components/Experience';
+import SectionProjects from './components/Projects';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -17,9 +19,11 @@ function App() {
         <SectionIntro />
         <SectionAboutMe />
         <SectionProjects />
-        <SectionExperience />
+        <Experience />
+        <Contact />
       </Content>
-      <div style={{height: 1000}}></div>
+      <Socials />
+      <Footer />
     </>
   );
 }
@@ -33,6 +37,7 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 300px;
+  z-index: -1;
 
   @media screen and (max-width: 1415px) {
     padding: 0 80px;

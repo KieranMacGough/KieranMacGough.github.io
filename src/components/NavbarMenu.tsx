@@ -1,17 +1,36 @@
-import React, { FC } from 'react';
+import React, { FC, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import NavbarMenuItem from './NavbarMenuItem';
+import resume from '../files/KieranMacGoughCV.pdf';
 
+function NavbarMenu(props: any) {
+  function handleClick(name: string) {
+    const anchor = document.querySelector(name) as HTMLDivElement;
+    anchor.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+    props.handleToggle();
+  }
 
+  const PDFDownload = () => {
+    fetch(resume).then(response => {
+      response.blob().then(blob => {
+        // Creating new object of PDF file
+        const fileURL = window.URL.createObjectURL(blob);
+        // Setting various property values
+        let alink = document.createElement('a');
+        alink.href = fileURL;
+        alink.download = 'Kieran MacGough Resume.pdf';
+        alink.click();
+      })
+    })
 
-function NavbarMenu() {
+  }
   return (
-    <MenuItems>
-      <NavbarMenuItem id='1' text="About Me" onClick={() => {const anchor = document.querySelector('#aboutme') as HTMLDivElement; anchor.scrollIntoView({behavior: "smooth"})}}/>
-      <NavbarMenuItem id="2" text="Projects" onClick={() => {const anchor = document.querySelector('#projects') as HTMLDivElement; anchor.scrollIntoView({behavior: "smooth"})}}/>
-      <NavbarMenuItem id="3" text="Experience" onClick={() => {const anchor = document.querySelector('#experience') as HTMLDivElement; anchor.scrollIntoView({behavior: "smooth"})}}/>
-      <NavbarMenuItem id="4" text="Contact" onClick={() => {const anchor = document.querySelector('#contact') as HTMLDivElement; anchor.scrollIntoView({behavior: "smooth"})}}/>
-      <Button id="5">Resume</Button>
+    <MenuItems >
+      <NavbarMenuItem id='1' text="About Me" onClick={() => { handleClick('#aboutme') }} />
+      <NavbarMenuItem id="2" text="Projects" onClick={() => { handleClick('#projects') }} />
+      <NavbarMenuItem id="3" text="Experience" onClick={() => { handleClick('#experience') }} />
+      <NavbarMenuItem id="4" text="Contact" onClick={() => { handleClick('#contact') }} />
+      <Button id="5" onClick={PDFDownload}>Resume</Button>
     </MenuItems>
   );
 }

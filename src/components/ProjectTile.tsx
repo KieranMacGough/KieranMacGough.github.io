@@ -19,7 +19,7 @@ const ProjectTile:FC<props> = (props) => {
     })
     
     return (
-        <Container id="experience">
+        <Container>
             <SectionContent>
                 <Title>{props.project.name}</Title>
                 <Image src={require('../images/'+props.project.imgName)} />

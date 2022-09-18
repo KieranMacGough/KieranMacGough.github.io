@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect, useRef, Ref } from 'react';
 import styled from 'styled-components';
 import NavbarMenu from './NavbarMenu';
 
@@ -10,19 +10,47 @@ interface IWrapper {
     navOpen: boolean;
 }
 
+function useOutsideAlerter(ref: any, handleToggle: any) {
+    useEffect(() => {
+        /**
+         * Alert if clicked on outside of element
+         */
+        function handleClickOutside(event: any) {
+            if (ref.current && ref.current == event.target) {
+                handleToggle();
+            }
+        }
+        // Bind the event listener
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            // Unbind the event listener on clean up
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [ref]);
+}
+
 function Navbar() {
     const [navOpen, setNavOpen] = useState<boolean>(false);
     const [currentScrollHeight, setCurrentScrollHeight] = useState<number>(0);
     useEffect(() => {
-        navOpen ? document.body.style.overflow = "hidden" : document.body.style.overflow = "unset"
-    }, [navOpen])
+        if (navOpen) {
+            document.body.style.height = "100%";
+            document.body.style.overflow = "hidden";
 
+        } else {
+            document.body.style.overflow = "unset"
+        }
+    }, [navOpen])
 
     const handleToggle = () => {
         setNavOpen(prev => !prev);
     };
 
-    
+    const wrapperRef = useRef(null);
+    useOutsideAlerter(wrapperRef, handleToggle);
+
+
+
     window.onscroll = function () { scrollFunction() };
 
     function scrollFunction() {
@@ -36,15 +64,11 @@ function Navbar() {
             document.getElementById("navbar")!.style.top = "-110px";
         }
         setCurrentScrollHeight(window.scrollY);
-            // if (document.body.scrollHeight > 20 || document.documentElement.scrollTop < 20) {
-            //     document.getElementById("navbar")!.style.top = "0";
-            // } else {
-            //     document.getElementById("navbar")!.style.top = "-100px";
-            // }
     }
+
     return (
         <>
-            <Container id="navbar">
+            <Container id="navbar" >
                 <Logo></Logo>
                 <Hamburger onClick={handleToggle}>
                     <svg
@@ -59,8 +83,8 @@ function Navbar() {
                             clipRule="evenodd" />
                     </svg>
                 </Hamburger>
-                <Wrapper navOpen={navOpen}>
-                    <NavbarMenu />
+                <Wrapper navOpen={navOpen} ref={wrapperRef} >
+                    <NavbarMenu handleToggle={handleToggle} />
                 </Wrapper>
             </Container>
         </>
@@ -74,7 +98,7 @@ const Container = styled.section`
     justify-content: space-between;
     padding: 2em;
     position: fixed;
-    top: -110px;
+    top: 0;
     z-index: 1;
     width: 100%;
     transition: all 300ms ease;
@@ -116,7 +140,8 @@ const Wrapper = styled.div<IWrapper>`
         // makes menu span full height and width
         width: 100%;
         height: calc(100vh);
-        backdrop-filter: blur(5px) saturate(80%);
-        background-color: red;
+        backdrop-filter: blur(8px);
+        background-color: #13262FB3;
+        z-index: 0;
   }
 `

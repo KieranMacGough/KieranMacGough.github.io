@@ -5,12 +5,13 @@ import useWindowDimensions from '../hooks/useWindowDimensions';
 interface IContainer {
     height: number;
 }
-function SectionIntro() {
+
+function Intro() {
     const { height, width } = useWindowDimensions();
     console.log(height);
     return (
         <Container>
-            <Content height={height-110}>
+            <Content height={height}>
             <Hello>Hi, my name is</Hello>
             <Name>Kieran MacGough.</Name>
             <Headline>I like to code.</Headline>
@@ -23,7 +24,7 @@ function SectionIntro() {
     )
 }
 
-export default SectionIntro;
+export default Intro;
 
 const Container = styled.div`
     display: flex;
@@ -53,10 +54,9 @@ const Hello = styled.p`
     color: orange;
     font-weight: 200;
     font-size: 50px;
-    animation-delay: 2s;
+    animation-delay: 0s;
     @media screen and (max-width: 925px) {
     font-size: 25px;
-    animation-delay: 0s;
   }
 `
 
@@ -64,29 +64,26 @@ const Name = styled.p`
     color: white;
     font-weight: 700;
     font-size: 80px;
-    animation-delay: 2.3s;
+    animation-delay: 0.4s;
     @media screen and (max-width: 925px) {
     font-size: 40px;
-    animation-delay: 0.3s;
   }
 `
 
 const Headline = styled.p`
     font-weight: 300;
     font-size: 100px;
-    animation-delay: 2.6s;
+    animation-delay: 0.8s;
     @media screen and (max-width: 925px) {
     font-size: 50px;
-    animation-delay: 0.6s;
   }
 `
 
 const Wrapper = styled.div`
     display: flex;
     align-items: center;
-    animation-delay: 2.9s;
+    animation-delay: 1.2s;
     @media screen and (max-width: 925px) {
-    animation-delay: 0.9s;
   }
 `
 const Slashes = styled.a`
