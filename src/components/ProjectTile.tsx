@@ -40,7 +40,7 @@ const Container = styled.div`
     max-width: 800px;
     padding: 20px;
     margin: 20px;
-    height: 500px;
+    height: fit-content;
     border: solid 1px orange;
     border-radius: 10px;
 `
@@ -56,11 +56,14 @@ const Title = styled.p`
     margin: 20px 0 40px 0;
 `
 const Image = styled.img`
-    max-width: 320px;
-    max-height: 200px;
+    max-width: 95%;
+    max-height: 280px;
     border: solid 1px orange;
     border-radius: 10px;
     margin-bottom: 20px;
+    @media screen and (max-width: 1000px) {
+
+  }
 `
 
 const Description = styled.p``

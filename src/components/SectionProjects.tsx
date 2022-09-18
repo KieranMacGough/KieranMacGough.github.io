@@ -17,7 +17,7 @@ const ProjectTiles = (() => {
 function SectionProjects() {   
     
     return (
-        <Container id="experience">
+        <Container id="projects">
             <SectionTitle title="Projects I've Worked On" />
             <SectionContent>
                 <ProjectTiles />
@@ -41,5 +41,9 @@ const SectionContent = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
+
 
 `

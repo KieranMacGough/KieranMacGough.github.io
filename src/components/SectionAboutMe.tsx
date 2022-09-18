@@ -41,6 +41,9 @@ const SectionContent = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
 
 `
 const Text = styled.p`
@@ -54,6 +57,9 @@ const BulletList = styled.ul`
     -moz-columns: 2;
     list-style-position: inside;
     max-width: 400px;
+    @media screen and (max-width: 1000px) {
+    margin-bottom: 20px;
+  }
 `
 
 const ListItem = styled.li`
@@ -65,4 +71,7 @@ const Image = styled.img`
       border-radius: 20%;
       max-width: 300px;
       align-self: flex-start;
+      @media screen and (max-width: 1000px) {
+        align-self: center;
+  }
 `

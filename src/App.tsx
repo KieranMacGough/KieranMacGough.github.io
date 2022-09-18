@@ -34,4 +34,11 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 300px;
+
+  @media screen and (max-width: 1415px) {
+    padding: 0 80px;
+  }
+  @media screen and (max-width: 1000px) {
+    padding: 0 80px;
+  }
 `
