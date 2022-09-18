@@ -39,8 +39,16 @@ export default createGlobalStyle`
        margin:0 auto;
    }
 
+   html, body {
+    overflow-x: hidden;
+   }
    body {
        background: #13262F;
+       position: relative;
+       width: 100%;
+       -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+        box-sizing: border-box;
    }
 
    a, p {

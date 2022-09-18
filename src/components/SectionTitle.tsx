@@ -3,12 +3,25 @@ import styled from 'styled-components';
 
 interface IProps {
     title: string;
+    short?: string;
 }
 
 const SectionTitle: FC<IProps> = (props) => {
+    let shortTitle = ''
+    
+    if (props.short) {
+        shortTitle = props.short
+    } else {
+        shortTitle = props.title
+    }
+
     return (
         <Container>
             <Slashes>//</Slashes>
+            {props.short != ''
+            ? <ShortTitle>{shortTitle}</ShortTitle>
+            : <Title>{props.title}</Title>
+            }
             <Title>{props.title}</Title>
         </Container>
     )
@@ -29,8 +42,22 @@ const Slashes = styled.a`
   padding: 0 8px 0 0;
 `
 
+const ShortTitle = styled.a`
+    color: white;
+  font-size: 60px;
+  font-weight: 400;
+  display:none;
+  @media screen and (max-width: 1000px) {
+    display: inline-block;
+  }
+`
+
 const Title = styled.a`
   color: white;
-    font-size: 60px;
+  font-size: 60px;
   font-weight: 400;
+  display: inline-block;
+  @media screen and (max-width: 1000px) {
+    display: none;
+}
 `

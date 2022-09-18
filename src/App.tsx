@@ -3,7 +3,6 @@ import GlobalStyle from './styles/global';
 import Socials from './components/Socials';
 import Navbar from './components/Navbar';
 import SectionIntro from './components/SectionIntro';
-import './App.css';
 import styled from 'styled-components';
 import SectionAboutMe from './components/SectionAboutMe';
 import SectionExperience from './components/SectionExperience';
@@ -39,6 +38,6 @@ const Content = styled.div`
     padding: 0 80px;
   }
   @media screen and (max-width: 1000px) {
-    padding: 0 80px;
+    padding: 0 20px;
   }
 `

@@ -54,6 +54,10 @@ const Hello = styled.p`
     font-weight: 200;
     font-size: 50px;
     animation-delay: 2s;
+    @media screen and (max-width: 1000px) {
+    font-size: 25px;
+    animation-delay: 0s;
+  }
 `
 
 const Name = styled.p`
@@ -61,27 +65,44 @@ const Name = styled.p`
     font-weight: 700;
     font-size: 80px;
     animation-delay: 2.3s;
+    @media screen and (max-width: 1000px) {
+    font-size: 40px;
+    animation-delay: 0.3s;
+  }
 `
 
 const Headline = styled.p`
     font-weight: 300;
     font-size: 100px;
-    animation-delay: 2.6s
+    animation-delay: 2.6s;
+    @media screen and (max-width: 1000px) {
+    font-size: 50px;
+    animation-delay: 0.6s;
+  }
 `
 
 const Wrapper = styled.div`
     display: flex;
     align-items: center;
-    animation-delay: 2.9s
+    animation-delay: 2.9s;
+    @media screen and (max-width: 1000px) {
+    animation-delay: 0.9s;
+  }
 `
 const Slashes = styled.a`
   color: orange;
-  font-size: 35px;
+  font-size: 36px;
   font-weight: 400;
   padding: 0 8px 0 0;
+  @media screen and (max-width: 1000px) {
+    font-size: 18px;
+  }
 `
 
 const Blurb = styled.a`
   font-size: 18px;
   font-weight: 400;
+  @media screen and (max-width: 1000px) {
+    font-size: 9px;
+  }
 `

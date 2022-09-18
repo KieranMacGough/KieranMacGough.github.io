@@ -15,10 +15,10 @@ const ProjectTiles = (() => {
 
 
 function SectionProjects() {   
-    
     return (
         <Container id="projects">
-            <SectionTitle title="Projects I've Worked On" />
+            { }
+            <SectionTitle short="Projects" title="Projects I've Worked On" />
             <SectionContent>
                 <ProjectTiles />
             </SectionContent>
@@ -35,6 +35,9 @@ const Container = styled.div`
     align-items: flex-start;
     max-width: 800px;
     margin-bottom: 400px;
+    @media screen and (max-width: 1000px) {
+    margin-bottom: 250px;
+  }
 `
 
 const SectionContent = styled.div`

@@ -6,9 +6,9 @@ import me from '../images/me.jpg';
 function SectionExperience() {
     return (
         <Container id="experience">
-            <SectionTitle title="Places I've Worked" />
+            <SectionTitle short="Work" title="Places I've Worked" />
             <SectionContent>
-                
+
             </SectionContent>
         </Container>
     )
@@ -23,6 +23,9 @@ const Container = styled.div`
     align-items: flex-start;
     max-width: 800px;
     margin-bottom: 400px;
+    @media screen and (max-width: 1000px) {
+    margin-bottom: 250px;
+  }
 `
 
 const SectionContent = styled.div`
