@@ -66,6 +66,7 @@ function Navbar() {
                 document.body.style.height = '100vh'
                 document.body.style.overflowY = 'hidden';
                 document.body.style.position = 'fixed';
+                document.body.style.overscrollBehavior = 'contain';
             }
         } else {
             if (height >= 925) {
@@ -74,6 +75,7 @@ function Navbar() {
                 document.body.style.height = '100%'
                 document.body.style.overflowY = 'unset';
                 document.body.style.position = 'relative';
+                document.body.style.overscrollBehavior = 'auto';
             }
         }
     }, [navOpen, height])
@@ -117,13 +119,13 @@ function Navbar() {
                 </Hamburger>
                 {width >= 925 &&
                     <Wrapper navOpen={navOpen} ref={wrapperRef} >
-                        <NavbarMenu handleToggle={handleToggle} />
+                        <NavbarMenu isForMobile={false} handleToggle={handleToggle} />
                     </Wrapper>
                 }
             </Container>
             {width < 925 &&
                 <Wrapper navOpen={navOpen} ref={wrapperRef} >
-                    <NavbarMenu handleToggle={handleToggle} />
+                    <NavbarMenu isForMobile={true}  handleToggle={handleToggle} />
                 </Wrapper>
             }
         </>
@@ -158,7 +160,6 @@ const LogoWrapper = styled.a`
         all: initial;
         border-radius:50%;
         cursor: pointer;
-
     }
 `
 const Logo = styled.img`
@@ -168,7 +169,6 @@ const Logo = styled.img`
     &:hover {
         transform: scale(1.2);
         box-shadow: 0 0 20px 20px rgb(255 255 255 / 20%);
-        animation: bounce 1.5s ease-in-out infinite;
     }
 
 `

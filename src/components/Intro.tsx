@@ -13,11 +13,11 @@ function Intro() {
         <Container>
             <Content height={height}>
             <Hello>Hi, my name is</Hello>
-            <Name>Kieran MacGough.</Name>
+            <Name>Kieran MacGough.<br /></Name>
             <Headline>I like to code.</Headline>
             <Wrapper>
                 <Slashes>//</Slashes>
-                <Blurb>I am a front-end developer, specialising in React and looking for my first role as a developer.</Blurb>
+                <Blurb>I am a front-end developer, specialising in React. Welcome to my website.</Blurb>
             </Wrapper>
             </Content>
         </Container>
