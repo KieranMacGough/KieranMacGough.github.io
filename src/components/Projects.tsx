@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import SectionTitle from './SectionTitle';
-import me from '../images/me.jpg';
-import projects,  { Projects } from '../files/projects';
+import projects from '../files/projects';
 import ProjectTile from './ProjectTile';
 
 const ProjectTiles = (() => {

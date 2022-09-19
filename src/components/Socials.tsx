@@ -4,8 +4,6 @@ import LinkedInSVG from '../images/linkedin.svg';
 import GitHubSVG from '../images/github.svg';
 import YouTubeSVG from '../images/youtube.svg';
 
-interface props {
-}
 interface Icon {
   src: string;
   href: string;
@@ -15,8 +13,8 @@ function Socials() {
   return (
     <Container>
         <Wrapper href="https://github.com/KieranMacGough"><Icon src={GitHubSVG} /></Wrapper>
-        <Wrapper href="https://www.linkedin.com/in/kieran-macgough/"><Icon src={LinkedInSVG} /></Wrapper>
-        <Wrapper href="https://www.youtube.com/channel/UCek9LJ9JOJGMGIgimgIoH_w"><Icon src={YouTubeSVG} /></Wrapper>
+        <Wrapper href="https://www.linkedin.com/in/kieran-macgough/"><Icon src={LinkedInSVG} id="2" /></Wrapper>
+        <Wrapper href="https://www.youtube.com/channel/UCek9LJ9JOJGMGIgimgIoH_w"><Icon src={YouTubeSVG} id="3" /></Wrapper>
     </Container>
   );
 }
@@ -42,22 +40,6 @@ const Container = styled.div`
 }
 `
 
-const Icon = styled.img`
-  width: 40px;
-  margin-bottom: 20px;
-  transform: scale(1);
-  transition: 0.15s all ease;
-  filter: invert(100%) sepia(1%) saturate(34%) hue-rotate(215deg) brightness(103%) contrast(60%); // grey
-  &:hover {
-    filter: none; // grey
-    transform: scale(1.3);
-    box-shadow: 0 0 20px 20px rgb(0 0 0 / 20%);
-    cursor: pointer;
-  }
-  @media screen and (max-width: 925px) {
-    margin: 20px 30px;
-}`
-
 const Wrapper = styled.a`
     font-size: 16px;
     font-weight: 600;
@@ -75,4 +57,22 @@ const Wrapper = styled.a`
     &:visited:hover::after {
         opacity: 0;
     } 
+`
+
+const Icon = styled.img`
+  width: 40px;
+  margin-bottom: 20px;
+  transform: scale(1);
+  transition: 0.15s all ease;
+  filter: invert(100%) sepia(1%) saturate(34%) hue-rotate(215deg) brightness(103%) contrast(60%); // grey
+  &:hover {
+    filter: none; 
+    transform: scale(1.3);
+    box-shadow: 0 0 20px 20px rgb(0 0 0 / 20%);
+    cursor: pointer;
+  }
+  @media screen and (max-width: 925px) {
+    margin: 20px 30px;
+  }
+  
 `

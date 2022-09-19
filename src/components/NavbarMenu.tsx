@@ -1,4 +1,3 @@
-import React, { FC, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import NavbarMenuItem from './NavbarMenuItem';
 import resume from '../files/KieranMacGoughCV.pdf';

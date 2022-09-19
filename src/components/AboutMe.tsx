@@ -9,7 +9,7 @@ function AboutMe() {
             <SectionTitle title="About Me" />
             <SectionContent>
                 <div>
-                    <Text>Hello! My name is Kieran and I love developing for the web. My focus is on frontend development, but would love to learn full stack. My first taste of coding was back in 2013 after developing a mod for Amnesia: The Dark Descent, <a href="https://www.moddb.com/mods/the-four-horsemen" target="_blank">The Four Horsemen</a>, using AngelScript. Since then, I have done small amounts of coding here and there, but only recently made the decision to change careers into a developer role. <br /><br />
+                    <Text>Hello! My name is Kieran and I love developing for the web. My focus is on frontend development, but would love to learn full stack. My first taste of coding was back in 2013 after developing a mod for Amnesia: The Dark Descent, <a href="https://www.moddb.com/mods/the-four-horsemen" rel="noreferrer" target="_blank">The Four Horsemen</a>, using AngelScript. Since then, I have done small amounts of coding here and there, but only recently made the decision to change careers into a developer role. <br /><br />
                         Starting in 2022, I have been working on completing the free CS50X Web course, from Harvard, as well as working on some projects to gain experience using modern frameworks and the development process. <br /><br />
                         The main technologies I have been working with are:<br /><br /></Text>
                     <BulletList>

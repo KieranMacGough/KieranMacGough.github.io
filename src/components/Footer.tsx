@@ -1,7 +1,4 @@
 import styled from 'styled-components';
-import SectionTitle from './SectionTitle';
-import me from '../images/me.jpg';
-
 
 function Footer() {
     return (

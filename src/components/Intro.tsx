@@ -7,7 +7,7 @@ interface IContainer {
 }
 
 function Intro() {
-    const { height, width } = useWindowDimensions();
+    const { height } = useWindowDimensions();
     console.log(height);
     return (
         <Container>

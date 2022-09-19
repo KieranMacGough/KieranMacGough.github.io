@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import SectionTitle from './SectionTitle';
-import image from '../images/LinkedIn.png';
 import { FC } from 'react';
 
 interface props {

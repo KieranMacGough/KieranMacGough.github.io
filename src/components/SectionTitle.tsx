@@ -1,30 +1,30 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import styled from 'styled-components';
 
 interface IProps {
-    title: string;
-    short?: string;
+  title: string;
+  short?: string;
 }
 
 const SectionTitle: FC<IProps> = (props) => {
-    let shortTitle = ''
-    
-    if (props.short) {
-        shortTitle = props.short
-    } else {
-        shortTitle = props.title
-    }
+  let shortTitle = ''
 
-    return (
-        <Container>
-            <Slashes>//</Slashes>
-            {props.short != ''
-            ? <ShortTitle>{shortTitle}</ShortTitle>
-            : <Title>{props.title}</Title>
-            }
-            <Title>{props.title}</Title>
-        </Container>
-    )
+  if (props.short) {
+    shortTitle = props.short
+  } else {
+    shortTitle = props.title
+  }
+
+  return (
+    <Container>
+      <Slashes>//</Slashes>
+      {props.short !== ''
+        ? <ShortTitle>{shortTitle}</ShortTitle>
+        : <Title>{props.title}</Title>
+      }
+      <Title>{props.title}</Title>
+    </Container>
+  )
 }
 
 export default SectionTitle;

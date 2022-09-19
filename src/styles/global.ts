@@ -40,7 +40,7 @@ export default createGlobalStyle`
    }
 
    html, body {
-    overflow-x: hidden;
+      overflow-x: hidden;
    }
    body {
        background: #13262F;
@@ -49,6 +49,7 @@ export default createGlobalStyle`
        -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
         box-sizing: border-box;
+        overscroll-behavior: none;
    }
 
    a, p {

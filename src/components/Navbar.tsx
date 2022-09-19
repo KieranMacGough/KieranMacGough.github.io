@@ -1,13 +1,33 @@
-import { FC, useState, useEffect, useRef, Ref } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import NavbarMenu from './NavbarMenu';
-
-
-interface Iprops {
-}
+import KMLogo from '../images/KM_Logo.png';
 
 interface IWrapper {
     navOpen: boolean;
+}
+
+function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+        width,
+        height
+    };
+}
+
+function useWindowDimensions() {
+    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
+    useEffect(() => {
+        function handleResize() {
+            setWindowDimensions(getWindowDimensions());
+        }
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    return windowDimensions;
 }
 
 function useOutsideAlerter(ref: any, handleToggle: any) {
@@ -16,7 +36,7 @@ function useOutsideAlerter(ref: any, handleToggle: any) {
          * Alert if clicked on outside of element
          */
         function handleClickOutside(event: any) {
-            if (ref.current && ref.current == event.target) {
+            if (ref.current && ref.current === event.target) {
                 handleToggle();
             }
         }
@@ -32,18 +52,31 @@ function useOutsideAlerter(ref: any, handleToggle: any) {
 function Navbar() {
     const [navOpen, setNavOpen] = useState<boolean>(false);
     const [currentScrollHeight, setCurrentScrollHeight] = useState<number>(0);
-    
+    const { height, width } = useWindowDimensions();
+
     useEffect(() => {
         if (navOpen) {
-            let TopScroll = window.pageYOffset || document.documentElement.scrollTop;
-            let LeftScroll = window.pageXOffset || document.documentElement.scrollLeft;
-            window.onscroll = function() {
-                window.scrollTo(LeftScroll, TopScroll);
+            if (height >= 925) {
+                let TopScroll = window.scrollY || document.documentElement.scrollTop;
+                let LeftScroll = window.scrollX || document.documentElement.scrollLeft;
+                window.onscroll = function () {
+                    window.scrollTo(LeftScroll, TopScroll);
+                }
+            } else {
+                document.body.style.height = '100vh'
+                document.body.style.overflowY = 'hidden';
+                document.body.style.position = 'fixed';
             }
         } else {
-            window.onscroll = function () { scrollFunction() };
+            if (height >= 925) {
+                window.onscroll = function () { scrollFunction() };
+            } else {
+                document.body.style.height = '100%'
+                document.body.style.overflowY = 'unset';
+                document.body.style.position = 'relative';
+            }
         }
-    }, [navOpen])
+    }, [navOpen, height])
 
     const handleToggle = () => {
         setNavOpen(prev => !prev);
@@ -57,13 +90,9 @@ function Navbar() {
     window.onscroll = function () { scrollFunction() };
 
     function scrollFunction() {
-        console.log(window.scrollY);
-        console.log(currentScrollHeight);
         if (currentScrollHeight > window.scrollY) {
-            console.log("Hide Nav")
             document.getElementById("navbar")!.style.top = "0";
         } else {
-            console.log("Show Nav")
             document.getElementById("navbar")!.style.top = "-110px";
         }
         setCurrentScrollHeight(window.scrollY);
@@ -72,7 +101,7 @@ function Navbar() {
     return (
         <>
             <Container id="navbar" >
-                <Logo></Logo>
+                <LogoWrapper href=""><Logo src={KMLogo} /></LogoWrapper>
                 <Hamburger onClick={handleToggle}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -86,11 +115,17 @@ function Navbar() {
                             clipRule="evenodd" />
                     </svg>
                 </Hamburger>
-
+                {width >= 925 &&
+                    <Wrapper navOpen={navOpen} ref={wrapperRef} >
+                        <NavbarMenu handleToggle={handleToggle} />
+                    </Wrapper>
+                }
             </Container>
-            <Wrapper navOpen={navOpen} ref={wrapperRef} >
+            {width < 925 &&
+                <Wrapper navOpen={navOpen} ref={wrapperRef} >
                     <NavbarMenu handleToggle={handleToggle} />
                 </Wrapper>
+            }
         </>
     );
 }
@@ -100,6 +135,7 @@ export default Navbar;
 const Container = styled.section`
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 2em;
     position: fixed;
     top: 0;
@@ -109,9 +145,33 @@ const Container = styled.section`
     backdrop-filter: blur(8px);
     background-color: #13262FB3;
     box-shadow: 0 1px 20px 1px darkgray;
+    max-height: 100px;
 `;
 
-const Logo = styled.img``
+const LogoWrapper = styled.a`
+    &:link::after,
+    &:visited::after,
+    &:link:hover::after, 
+    &:link:focus::after,
+    &:visited:hover::after,
+    &:visited:hover::after {
+        all: initial;
+        border-radius:50%;
+        cursor: pointer;
+
+    }
+`
+const Logo = styled.img`
+    height: 60px;
+    border-radius: 100px;
+    transform: scale(1);
+    &:hover {
+        transform: scale(1.2);
+        box-shadow: 0 0 20px 20px rgb(255 255 255 / 20%);
+        animation: bounce 1.5s ease-in-out infinite;
+    }
+
+`
 
 const Hamburger = styled.button`
   border: 0;
@@ -133,10 +193,12 @@ const Wrapper = styled.div<IWrapper>`
     justify-content: center;
     align-items: center;
     padding: 0 2em 0 0;
+    z-index: 1;
     @media screen and (max-width: 925px) {
         position: fixed;
         right: 0;
         top:0;
+        transition: all 300ms ease;
         display: ${props => props.navOpen ? 'flex' : 'none'};
         flex-direction: column;
         justify-content: center;
@@ -147,15 +209,5 @@ const Wrapper = styled.div<IWrapper>`
         backdrop-filter: blur(8px);
         background-color: #13262FB3;
         z-index: 1;
-        &:before {
-            backdrop-filter: blur(px);
-            content: "";
-            display: block;
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            left: 0;
-            top: 0; 
-        }
   }
 `
