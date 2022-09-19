@@ -56,7 +56,6 @@ const Button = styled.button`
     opacity: 0;
     position: relative;
     animation: fade-from-top 1s forwards calc((${props => props.id} - 1) * 300ms);
-
     justify-content: left;
     overflow: visible;
     @media screen and (max-width: 925px) {

@@ -32,13 +32,16 @@ function useOutsideAlerter(ref: any, handleToggle: any) {
 function Navbar() {
     const [navOpen, setNavOpen] = useState<boolean>(false);
     const [currentScrollHeight, setCurrentScrollHeight] = useState<number>(0);
+    
     useEffect(() => {
         if (navOpen) {
-            document.body.style.height = "100%";
-            document.body.style.overflow = "hidden";
-
+            let TopScroll = window.pageYOffset || document.documentElement.scrollTop;
+            let LeftScroll = window.pageXOffset || document.documentElement.scrollLeft;
+            window.onscroll = function() {
+                window.scrollTo(LeftScroll, TopScroll);
+            }
         } else {
-            document.body.style.overflow = "unset"
+            window.onscroll = function () { scrollFunction() };
         }
     }, [navOpen])
 
@@ -83,10 +86,11 @@ function Navbar() {
                             clipRule="evenodd" />
                     </svg>
                 </Hamburger>
-                <Wrapper navOpen={navOpen} ref={wrapperRef} >
+
+            </Container>
+            <Wrapper navOpen={navOpen} ref={wrapperRef} >
                     <NavbarMenu handleToggle={handleToggle} />
                 </Wrapper>
-            </Container>
         </>
     );
 }
@@ -130,7 +134,7 @@ const Wrapper = styled.div<IWrapper>`
     align-items: center;
     padding: 0 2em 0 0;
     @media screen and (max-width: 925px) {
-        position: absolute;
+        position: fixed;
         right: 0;
         top:0;
         display: ${props => props.navOpen ? 'flex' : 'none'};
@@ -142,6 +146,16 @@ const Wrapper = styled.div<IWrapper>`
         height: calc(100vh);
         backdrop-filter: blur(8px);
         background-color: #13262FB3;
-        z-index: 0;
+        z-index: 1;
+        &:before {
+            backdrop-filter: blur(px);
+            content: "";
+            display: block;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0; 
+        }
   }
 `
