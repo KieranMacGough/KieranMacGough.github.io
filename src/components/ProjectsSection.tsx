@@ -12,25 +12,30 @@ export default function AboutMeSection() {
         <ProjectCard image={item.image} title={item.title} description={item.description} country={item.country} github={item.github} badges={item.badges} />
     ));
 
+    const slides = data.map((item) => (
+        <Carousel.Slide key={item.title}>
+            <ProjectCard image={item.image} title={item.title} description={item.description} country={item.country} github={item.github} badges={item.badges} />
+        </Carousel.Slide>
+    ))
     return (
         <Container>
             <h1 id='projects' className={classes.title}><span className={classes.slashes}>//</span>Projects</h1>
 
             <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
-                <Container className={classes.container}>
+                <Container className={classes.container} >
                     {cards}
                 </Container>
             </MediaQuery>
             <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-                <Container className={classes.container}>
+                <Container>
                     <Carousel
                         slideSize="50%"
-                        breakpoints={[{ maxWidth: 'sm', slideSize: '0%', slideGap: 2 }]}
+                        breakpoints={[{ maxWidth: 'sm', slideSize: '100%', slideGap: 1 }]}
                         slideGap="xl"
                         align="start"
                         slidesToScroll={1}
                     >
-                        {cards}
+                        {slides}
                     </Carousel>
                 </Container>
             </MediaQuery>
