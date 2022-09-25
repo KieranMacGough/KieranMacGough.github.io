@@ -5,7 +5,7 @@ import me from '../images/me.jpg';
 
 function AboutMe() {
     return (
-        <Container id="aboutme">
+        <div id="aboutme">
             <SectionTitle title="About Me" />
             <SectionContent>
                 <div>
@@ -22,7 +22,7 @@ function AboutMe() {
                 </div>
                 <Image src={me} />
             </SectionContent>
-        </Container>
+        </div>
     )
 }
 

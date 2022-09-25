@@ -1,48 +1,43 @@
-import React from 'react';
-import GlobalStyle from './styles/global';
-import Socials from './components/Socials';
-import Navbar from './components/Navbar';
-import SectionIntro from './components/Intro';
-import styled from 'styled-components';
-import SectionAboutMe from './components/AboutMe';
-import Experience from './components/Experience';
-import SectionProjects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import { useState } from 'react';
+import {
+  AppShell,
+  useMantineTheme,
+  Container,
+} from '@mantine/core';
+import FooterSection from './components/FooterSection';
+import HeaderSection from './components/HeaderSection';
+import IntroSection from './components/IntroSection';
+import AboutMeSection from './components/AboutMeSection';
+import ProjectsSection from './components/ProjectsSection';
 
-function App() {
+
+export default function App() {
+  const theme = useMantineTheme();
+  const [opened, setOpened] = useState(false);
   return (
-    <>
-      <GlobalStyle />
-      <Navbar />
-      <Content>
-        <SectionIntro />
-        <SectionAboutMe />
-        <SectionProjects />
-        <Experience />
-        <Contact />
-      </Content>
-      <Socials />
-      <Footer />
-    </>
+    <AppShell
+      styles={{
+        main: {
+          background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+        },
+      }}
+      footer={
+        <FooterSection />
+      }
+      header={
+          <HeaderSection links={[
+            {link:'aboutme', label:'About Me'},
+            {link:'projects', label:'Projects'},
+            {link:'experience', label:'Experience'},
+            {link:'contact', label:'Contact'}]} />
+      }
+    >
+      <Container>
+        <IntroSection />
+        <AboutMeSection />
+        <ProjectsSection />
+      </Container>
+      <p style={{height: '3000px'}}></p>
+    </AppShell>
   );
 }
-
-export default App;
-
-const Content = styled.div`
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0 300px;
-  z-index: -1;
-
-  @media screen and (max-width: 1415px) {
-    padding: 0 80px;
-  }
-  @media screen and (max-width: 1000px) {
-    padding: 0 20px;
-  }
-`
