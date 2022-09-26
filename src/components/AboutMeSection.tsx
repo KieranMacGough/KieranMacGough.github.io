@@ -1,4 +1,4 @@
-import { Container, createStyles, Image, List, Text } from '@mantine/core';
+import { Container, createStyles, Image, List, MediaQuery, Text } from '@mantine/core';
 import me from '../images/me.jpg';
 import SectionHeading from './SectionHeading';
 
@@ -10,7 +10,7 @@ export default function AboutMeSection() {
             <Container className={classes.content}>
                 <Container className={classes.text}>
                     <Text className={classes.paragraph}>
-                        Hello! My name is Kieran and I love developing for the web. My focus is on frontend development, but would love to learn full stack. My first taste of coding was back in 2013 after developing a mod for Amnesia: The Dark Descent, <a href="https://www.moddb.com/mods/the-four-horsemen" rel="noreferrer" target="_blank" style={{textDecoration: 'underline orange'}}>The Four Horsemen</a>, using AngelScript. Since then, I have done small amounts of coding here and there, but only recently made the decision to change careers into a developer role. <br /><br />
+                        Hello! My name is Kieran and I love developing for the web. My focus is on frontend development, but would love to learn full stack. My first taste of coding was back in 2013 after developing a mod for Amnesia: The Dark Descent, The Four Horsemen, using AngelScript. Since then, I have done small amounts of coding here and there, but only recently made the decision to change careers into a developer role. <br /><br />
                         Starting in 2022, I have been working on completing the free CS50X Web course, from Harvard, as well as working on some projects to gain experience using modern frameworks and the development process. <br /><br />
                         The main technologies I have been working with are:<br /><br />
                     </Text>
@@ -22,7 +22,12 @@ export default function AboutMeSection() {
                         <List.Item>React Native</List.Item>
                     </List>
                 </Container>
-                <Image className={classes.image} src={me} radius={'md'}/>
+                <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+                    <Image className={classes.image} height={350} width={350} src={me} radius={'md'} />
+                </MediaQuery>
+                <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+                    <Image className={classes.image} fit={'contain'} src={me} radius={'md'} />
+                </MediaQuery>
             </Container>
         </Container>
     )
@@ -44,17 +49,22 @@ const useStyles = createStyles((theme) => ({
         alignItems: 'flex-start',
         padding: 0,
         [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-            flexDirection: 'column'
+            flexDirection: 'column',
+            alignItems: 'center',
         }
     },
 
     image: {
-        borderColor: 'orange',
-        borderWidth: '3px',
-        borderStyle: 'solid',
         borderRadius: theme.radius.md,
-        boxShadow: '0 0 20px 20px rgb(0 0 0 / 20%)',
-        transform: 'rotate(10deg)'
+        boxShadow: theme.colorScheme === 'dark' ? '0 0 10px 10px rgb(255 255 255 / 10%)' : '0 0 10px 10px rgb(0 0 0 / 20%)' ,
+        transform: 'rotate(10deg)',
+        marginRight: '30px',
+        [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+            transform: 'none',
+            marginTop: theme.spacing.xl,
+            marginRight: 0,
+            
+        }
     },
 
     text: {
@@ -63,12 +73,12 @@ const useStyles = createStyles((theme) => ({
 
     paragraph: {
         marginRight: '30px',
-        
+
         [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
             marginRight: '0px'
         },
     },
-    
+
     list: {
         listStyleType: 'square',
         columns: 2,
