@@ -1,23 +1,25 @@
 {
   "files": {
     "main.css": "/static/css/main.e6c13ad2.css",
-    "main.js": "/static/js/main.f266d883.js",
+    "main.js": "/static/js/main.01934729.js",
     "static/js/787.1ed0c42c.chunk.js": "/static/js/787.1ed0c42c.chunk.js",
-    "static/media/KieranMacGoughCV.pdf": "/static/media/KieranMacGoughCV.1757bc5e53fb0efea254.pdf",
-    "static/media/PokedexApp.png": "/static/media/PokedexApp.e76c23ed50ccc2bb3cec.png",
     "static/media/me.jpg": "/static/media/me.e8ae1ab5b558f36e5ebb.jpg",
+    "static/media/PokedexApp.png": "/static/media/PokedexApp.ead9f37fd8df5c949ca3.png",
     "static/media/TheFourHorsemen.jpg": "/static/media/TheFourHorsemen.4b98f66a9a479618fb8f.jpg",
-    "static/media/KM_Logo.png": "/static/media/KM_Logo.3999e0f4d1fbceda8ed0.png",
+    "static/media/KmLogo.png": "/static/media/KmLogo.3999e0f4d1fbceda8ed0.png",
+    "static/media/Portfolio.png": "/static/media/Portfolio.939684817b7b33a8941b.png",
+    "static/media/QuickStartGuide.png": "/static/media/QuickStartGuide.d45408e86274fea1863f.png",
     "index.html": "/index.html",
     "static/media/github.svg": "/static/media/github.1ba3cd4d5be2bed39ba9b547b54b1f97.svg",
+    "static/media/email.svg": "/static/media/email.8fbfe65ef7a09418c2aa055da16436fc.svg",
     "static/media/linkedin.svg": "/static/media/linkedin.d70a130d6bee2ee5063adc9f77758c81.svg",
     "static/media/youtube.svg": "/static/media/youtube.01fbe4b62ec5c10e3e57adebabee51f3.svg",
     "main.e6c13ad2.css.map": "/static/css/main.e6c13ad2.css.map",
-    "main.f266d883.js.map": "/static/js/main.f266d883.js.map",
+    "main.01934729.js.map": "/static/js/main.01934729.js.map",
     "787.1ed0c42c.chunk.js.map": "/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.f266d883.js"
+    "static/js/main.01934729.js"
   ]
 }
