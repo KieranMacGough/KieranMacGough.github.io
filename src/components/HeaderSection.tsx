@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { createStyles, Header, Container, Group, Burger, Paper, Transition, useMantineColorScheme, Image, Text } from '@mantine/core';
-import { useDisclosure, useScrollIntoView } from '@mantine/hooks';
+import { useDisclosure } from '@mantine/hooks';
 import KmLogo from '../images/KmLogo.png';
 
 const HEADER_HEIGHT = 96;

@@ -1,9 +1,11 @@
 import { Container, createStyles, Footer, Text } from '@mantine/core';
+import Socials from './Socials';
 
 export default function FooterSection() {
     const { classes } = useStyles();
     return (
         <Footer height={60} p="md" className={classes.root}>
+            <Socials />
             <Container className={classes.footer}>
                 <Text className={classes.text}>Made by Kieran MacGough</Text>
             </Container>

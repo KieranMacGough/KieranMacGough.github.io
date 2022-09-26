@@ -1,78 +1,56 @@
-import React, { FC } from 'react';
-import styled from 'styled-components';
 import LinkedInSVG from '../images/linkedin.svg';
 import GitHubSVG from '../images/github.svg';
 import YouTubeSVG from '../images/youtube.svg';
-
-interface Icon {
-  src: string;
-  href: string;
-}
+import { Container, createStyles, Image } from '@mantine/core';
 
 function Socials() {
+  const { classes } = useStyles();
   return (
-    <Container>
-        <Wrapper href="https://github.com/KieranMacGough"><Icon src={GitHubSVG} /></Wrapper>
-        <Wrapper href="https://www.linkedin.com/in/kieran-macgough/"><Icon src={LinkedInSVG} id="2" /></Wrapper>
-        <Wrapper href="https://www.youtube.com/channel/UCek9LJ9JOJGMGIgimgIoH_w"><Icon src={YouTubeSVG} id="3" /></Wrapper>
+    <Container className={classes.container}>
+      <a target="_blank" rel="noreferrer" href="https://github.com/KieranMacGough"><Image width={40} height={40} className={classes.icon} src={GitHubSVG} /></a>
+      <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/kieran-macgough/"><Image width={40} height={40} className={classes.icon} src={LinkedInSVG} /></a>
+      <a target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCek9LJ9JOJGMGIgimgIoH_w"><Image width={40} height={40} className={classes.icon} src={YouTubeSVG} /></a>
     </Container>
   );
 }
 
 export default Socials;
 
-const Container = styled.div`
-  position: fixed;
-  bottom: 0;
-  margin: 0 60px 35px 60px;
-  display: flex;
-  flex-direction: column;
+const useStyles = createStyles((theme) => ({
+  container: {
+    position: 'fixed',
+    bottom: 0,
+    margin: 0,
+    marginBottom: '50px',
+    marginLeft: '50px',
+    display: 'flex',
+    flexDirection: 'column',
 
-  @media screen and (max-width: 1060px) {
-    margin: 0 60px 35px 10px;
-}
-  @media screen and (max-width: 925px) {
-    position: unset;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin: 0 40px 0px 40px;
-}
-`
-
-const Wrapper = styled.a`
-    font-size: 16px;
-    font-weight: 600;
-    &:link, &:visited {
-        display: inline-block;
-        position: relative;
-        padding: 0.2em 0;
-        text-decoration: none;
+    [`@media (max-width: 1300px)`]: {
+      position: 'relative',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      margin: 'auto',
     }
-    &:link::after,
-    &:visited::after,
-    &:link:hover::after, 
-    &:link:focus::after,
-    &:visited:hover::after,
-    &:visited:hover::after {
-        opacity: 0;
-    } 
-`
+  },
 
-const Icon = styled.img`
-  width: 40px;
-  margin-bottom: 20px;
-  transform: scale(1);
-  transition: 0.15s all ease;
-  filter: invert(100%) sepia(1%) saturate(34%) hue-rotate(215deg) brightness(103%) contrast(60%); // grey
-  &:hover {
-    filter: none; 
-    transform: scale(1.3);
-    box-shadow: 0 0 20px 20px rgb(0 0 0 / 20%);
-    cursor: pointer;
+  icon: {
+    marginBottom: '20px',
+    transform: 'scale(1)',
+    transition: '0.15s all ease',
+    filter: 'invert(100%) sepia(1%) saturate(34%) hue-rotate(215deg) brightness(103%) contrast(60%)',
+    [`@media (max-width: 1300px)`]: {
+      marginRight: '16px',
+      marginLeft: '16px'
+    },
+    [`@media (min-width: 1300px)`]: {
+      '&:hover': {
+        filter: 'none',
+        transform: 'scale(1.3)',
+        boxShadow: '0 0 20px 20px rgb(0 0 0 / 20%)',
+        cursor: 'pointer',
+      }
+    }
   }
-  @media screen and (max-width: 925px) {
-    margin: 20px 30px;
-  }
-  
-`
+}))

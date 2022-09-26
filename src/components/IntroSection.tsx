@@ -1,5 +1,4 @@
 import { Container, createStyles, Text} from '@mantine/core';
-import { useViewportSize } from '@mantine/hooks';
 import useWindowDimensions from '../hooks/useWindowDimensions';
 import { fadefrombottom } from '../styles/animations';
 
@@ -35,11 +34,9 @@ const useStyles = createStyles((theme, {height}: ContainerProps) => ({
         alignItems: 'flex-start',
         position: 'relative',
         zIndex: 0,
-        height: height-210,
+        height: height-120,
+        padding: 0,
         paddingTop: 200,
-        [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-            paddingTop: 60,
-        },
         '*': {
             position: 'relative',
             opacity: 0,

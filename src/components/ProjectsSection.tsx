@@ -1,39 +1,36 @@
 import { Carousel } from '@mantine/carousel';
-import { Container, createStyles, MediaQuery, useMantineTheme, Paper, Text, Title, Button, } from '@mantine/core';
-import { useMediaQuery } from 'react-responsive';
-import me from '../images/me.jpg';
+import { Container, createStyles, MediaQuery } from '@mantine/core';
 import { ProjectCard } from './ProjectCard';
-import { ProjectsCarosel } from './ProjectsCarosel';
+import SectionHeading from './SectionHeading';
 
 export default function AboutMeSection() {
     const { classes } = useStyles();
-    const theme = useMantineTheme();
     const cards = data.map((item) => (
-        <ProjectCard image={item.image} title={item.title} description={item.description} country={item.country} github={item.github} badges={item.badges} />
+        <ProjectCard image={item.image} title={item.title} description={item.description} maintech={item.maintech} github={item.github} badges={item.badges} moreinfo={item.moreinfo}/>
     ));
 
     const slides = data.map((item) => (
         <Carousel.Slide key={item.title}>
-            <ProjectCard image={item.image} title={item.title} description={item.description} country={item.country} github={item.github} badges={item.badges} />
+            <ProjectCard image={item.image} title={item.title} description={item.description} maintech={item.maintech} github={item.github} badges={item.badges} moreinfo={item.moreinfo} />
         </Carousel.Slide>
     ))
     return (
-        <Container>
-            <h1 id='projects' className={classes.title}><span className={classes.slashes}>//</span>Projects</h1>
-
+        <Container p="0">
+            <SectionHeading sectionId="projects" text="Projects" />
             <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
                 <Container className={classes.container} >
                     {cards}
                 </Container>
             </MediaQuery>
             <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-                <Container>
+                <Container p="0" className={classes.carouselcontainer}>
                     <Carousel
-                        slideSize="50%"
-                        breakpoints={[{ maxWidth: 'sm', slideSize: '100%', slideGap: 1 }]}
-                        slideGap="xl"
-                        align="start"
+                        slideSize="95%"
+                        slideGap={6}
+                        align="center"
                         slidesToScroll={1}
+                        withControls={false}
+                        style={{overflow: 'visible', maxWidth: '100%'}}
                     >
                         {slides}
                     </Carousel>
@@ -44,118 +41,100 @@ export default function AboutMeSection() {
 }
 
 
-const data = [{
-    "image": "https://images.unsplash.com/photo-1437719417032-8595fd9e9dc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
-    "title": "Verudela Beach",
-    "country": "Croatia",
-    "description": "Completely renovated for the season 2020, Arena Verudela Bech Apartments are fully equipped and modernly furnished 4-star self-service apartments located on the Adriatic coastline by one of the most beautiful beaches in Pula.",
+const data = [
+{
+    "image": "PokedexApp.png",
+    "title": "Pokedex App",
+    "maintech": "Mobile App",
+    "description": "A Pokedex app for Android, using PokeAPI and a public Figma design. Search and fitler through all 905 Pokemon. See more details, such as locations and type weaknesses.",
+    "moreinfo": "https://www.youtube.com/watch?v=0UgxlwFYOOc",
     "github": "https://github.com/KieranMacGough/Pokedex--React-Native-",
     "badges": [
         {
-            "emoji": "☀️",
-            "label": "Sunny weather"
+            "emoji": "⚛️",
+            "label": "React Native"
         },
         {
-            "emoji": "🦓",
-            "label": "Onsite zoo"
+            "emoji": "📜",
+            "label": "JavaScript"
         },
         {
-            "emoji": "🌊",
-            "label": "Sea"
+            "emoji": "🐱",
+            "label": "GitHub"
         },
         {
-            "emoji": "🌲",
-            "label": "Nature"
+            "emoji": "📥",
+            "label": "PokeAPI"
+        },
+    ]
+}, {
+    "image": "Portfolio.png",
+    "title": "Portfolio",
+    "maintech": "Website",
+    "description": "The site you are on now! Created as a way to get more experience with React, TypeScript and using a framework, which I settled on Mantine.",
+    "moreinfo": "",
+    "github": "https://github.com/KieranMacGough/KieranMacGough.github.io",
+    "badges": [
+        {
+            "emoji": "⚛️",
+            "label": "React"
         },
         {
-            "emoji": "🤽",
-            "label": "Water sports"
-        }
+            "emoji": "🐟",
+            "label": "Mantine"
+        },
+        {
+            "emoji": "🎨",
+            "label": "CSS"
+        },
+        {
+            "emoji": "📜",
+            "label": "TypeScript"
+        },
+        {
+            "emoji": "🐱",
+            "label": "GitHub"
+        },
     ]
 },
 {
-    "image": "https://images.unsplash.com/photo-1437719417032-8595fd9e9dc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
-    "title": "Verudela Beach",
-    "country": "Croatia",
-    "description": "Completely renovated for the season 2020, Arena Verudela Bech Apartments are fully equipped and modernly furnished 4-star self-service apartments located on the Adriatic coastline by one of the most beautiful beaches in Pula.",
-    "github": "https://github.com/KieranMacGough/Pokedex--React-Native-",
+    "image": "QuickStartGuide.png",
+    "title": "Quick Start Guide",
+    "maintech": "Website",
+    "description": "A website to assist onboarding new clients with implementation details of the companies most used APIs and their JS Plugin. Built with vanilla JS and CSS",
+    "moreinfo": "https://github.com/KieranMacGough/Quick-Start-Guide",
+    "github": "https://github.com/KieranMacGough/Quick-Start-Guide",
     "badges": [
         {
-            "emoji": "☀️",
-            "label": "Sunny weather"
+            "emoji": "🌐",
+            "label": "HTML"
         },
         {
-            "emoji": "🦓",
-            "label": "Onsite zoo"
+            "emoji": "📜",
+            "label": "JavaScript"
         },
         {
-            "emoji": "🌊",
-            "label": "Sea"
+            "emoji": "🎨",
+            "label": "CSS"
         },
-        {
-            "emoji": "🌲",
-            "label": "Nature"
-        },
-        {
-            "emoji": "🤽",
-            "label": "Water sports"
-        }
     ]
-}, {
-    "image": "https://images.unsplash.com/photo-1437719417032-8595fd9e9dc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
-    "title": "Verudela Beach",
-    "country": "Croatia",
-    "description": "Completely renovated for the season 2020, Arena Verudela Bech Apartments are fully equipped and modernly furnished 4-star self-service apartments located on the Adriatic coastline by one of the most beautiful beaches in Pula.",
+},
+{
+    "image": 'TheFourHorsemen.jpg',
+    "title": "The Four Horsemen",
+    "maintech": "Game Mod",
+    "description": "The Four Horsemen is a custom story mod for Amnesia: The Dark Descent. Developed in 2013, it is still one of the highest rated Amnesia mods on ModDB (93%)",
+    "moreinfo": "https://www.moddb.com/mods/the-four-horsemen",
     "github": "https://github.com/KieranMacGough/Pokedex--React-Native-",
     "badges": [
         {
-            "emoji": "☀️",
-            "label": "Sunny weather"
+            "emoji": "👼",
+            "label": "AngelScript"
         },
         {
-            "emoji": "🦓",
-            "label": "Onsite zoo"
+            "emoji": "⚙️",
+            "label": "HPL2 Map Editor"
         },
-        {
-            "emoji": "🌊",
-            "label": "Sea"
-        },
-        {
-            "emoji": "🌲",
-            "label": "Nature"
-        },
-        {
-            "emoji": "🤽",
-            "label": "Water sports"
-        }
-    ]
-}, {
-    "image": "https://images.unsplash.com/photo-1437719417032-8595fd9e9dc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80",
-    "title": "Verudela Beach",
-    "country": "Croatia",
-    "description": "Completely renovated for the season 2020, Arena Verudela Bech Apartments are fully equipped and modernly furnished 4-star self-service apartments located on the Adriatic coastline by one of the most beautiful beaches in Pula.",
-    "github": "https://github.com/KieranMacGough/Pokedex--React-Native-",
-    "badges": [
-        {
-            "emoji": "☀️",
-            "label": "Sunny weather"
-        },
-        {
-            "emoji": "🦓",
-            "label": "Onsite zoo"
-        },
-        {
-            "emoji": "🌊",
-            "label": "Sea"
-        },
-        {
-            "emoji": "🌲",
-            "label": "Nature"
-        },
-        {
-            "emoji": "🤽",
-            "label": "Water sports"
-        }
     ]
 },
 ]
@@ -163,7 +142,7 @@ const data = [{
 const useStyles = createStyles((theme) => ({
     container: {
         display: 'flex',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
     },
 
     title: {
@@ -174,6 +153,8 @@ const useStyles = createStyles((theme) => ({
         color: theme.primaryColor,
         paddingRight: '4px'
     },
-
+    carouselcontainer: {
+     
+    }
 
 }))
