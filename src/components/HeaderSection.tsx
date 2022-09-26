@@ -21,7 +21,7 @@ export default function HeaderSection({ links }: HeaderResponsiveProps) {
     <a
       key={link.label}
       href={link.link}
-      className={cx(classes.link, { [classes.linkActive]: active === link.link })}
+      className={classes.link}
       onClick={(event) => {
         event.preventDefault();
         setActive(link.link);
@@ -62,6 +62,7 @@ const useStyles = createStyles((theme) => ({
   root: {
     position: 'relative',
     zIndex: 1,
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.orange[0],
   },
 
   dropdown: {
@@ -75,6 +76,7 @@ const useStyles = createStyles((theme) => ({
     borderTopWidth: 0,
     overflow: 'hidden',
 
+
     [theme.fn.largerThan('sm')]: {
       display: 'none',
     },
@@ -85,6 +87,7 @@ const useStyles = createStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     height: '100%',
+    
   },
 
   logo: {
@@ -112,7 +115,7 @@ const useStyles = createStyles((theme) => ({
   link: {
     display: 'block',
     lineHeight: 1,
-    padding: '8px 12px',
+    padding: '4px 12px',
     margin: theme.spacing.xs,
     borderRadius: theme.radius.sm,
     textDecoration: 'none',
@@ -121,7 +124,7 @@ const useStyles = createStyles((theme) => ({
     fontWeight: 500,
 
     '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.orange[2],
     },
 
     [theme.fn.smallerThan('sm')]: {

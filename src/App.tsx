@@ -18,7 +18,7 @@ export default function App() {
     <AppShell
       styles={{
         main: {
-          background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+          background: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.orange[1],
           maxWidth: '100%',
           overflowX: 'hidden',
           padding: 0
